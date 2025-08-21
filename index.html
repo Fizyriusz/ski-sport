@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twój Sklep Narciarski - Sprzęt i Serwis z Doradcą AI</title>
-    <meta name="description" content="Profesjonalny sprzęt narciarski, topowe marki i fachowe doradztwo. Wypróbuj naszego doradcę AI, aby dopasować sprzęt idealny dla Ciebie!">
+    <title>Ski Sport Jamro - Sprzęt i Serwis Narciarski</title>
+    <meta name="description" content="Profesjonalny sprzęt narciarski, topowe marki i fachowe doradztwo. Sprzedaż, serwis i wypożyczalnia sprzętu narciarskiego.">
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,8 +135,7 @@
 
         /* --- 1. HERO SECTION --- */
         .hero-section {
-            /* REKOMENDACJA: Użyj tutaj zdjęcia plenerowego - góry, stok, narciarz w akcji */
-            background-image: url('img/hero-background.jpg'); /* ZMIEŃ NAZWĘ PLIKU NA SWOJE ZDJĘCIE STOKU */
+            background-image: url('img/hero-background.jpg'); 
             background-size: cover;
             background-position: center;
             color: white;
@@ -250,7 +249,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.7);
             border-radius: var(--border-radius);
             z-index: 1;
         }
@@ -270,144 +269,35 @@
             margin-bottom: 8px;
         }
 
-        /* Tła dla kart oferty */
-        #offer-card-1 { background-image: url('img/IMG_0396.JPG'); }
-        #offer-card-2 { background-image: url('img/IMG_0400.JPG'); }
-        #offer-card-3 { background-image: url('img/IMG_0402.JPG'); }
+        #offer-card-1 { background-image: url('img/img_0396.jpg'); }
+        #offer-card-2 { background-image: url('img/img_0400.jpg'); }
+        #offer-card-3 { background-image: url('img/img_0402.jpg'); }
         
-        
-        /* --- SEKCJA AI DORADCY --- */
-        #ai-advisor {
-            text-align: center;
-            padding-top: 0;
-        }
-        #ai-advisor .container {
-            border-top: 1px solid #e0e0e0;
-            padding-top: 80px;
-            margin-top: 80px;
-        }
-        #ai-advisor h2 {
-            font-size: 2.5rem;
-        }
-        #ai-advisor p {
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 30px;
-        }
-        
-        /* --- MODAL AI --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .modal-overlay.is-visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-container {
-            background: white;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        .modal-overlay.is-visible .modal-container {
-            transform: scale(1);
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .modal-header h3 {
-            margin-bottom: 0;
-        }
-        .close-modal {
-            font-size: 1.5rem;
-            border: none;
-            background: none;
-            cursor: pointer;
-            color: var(--color-text);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: var(--border-radius);
-            border: 1px solid #ccc;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        #ai-result {
-            margin-top: 30px;
-            background: var(--color-light-gray);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            white-space: pre-wrap;
-            line-height: 1.6;
-            min-height: 50px;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--color-primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-            display: none;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-
         /* --- 4. USŁUGI --- */
         .services-list {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 25px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
         
-        .services-list li {
+        .service-item {
             font-size: 1.1rem;
             font-weight: 500;
             background: #ffffff;
             padding: 25px;
             border-radius: var(--border-radius);
+        }
+        .service-item.clickable {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-item.clickable:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .services-list .service-icon {
@@ -417,13 +307,33 @@
             color: var(--color-primary);
         }
         
-        /* --- 5. MARKI --- */
+        /* --- 5. KARTA PODARUNKOWA I ZAMÓWIENIA --- */
+        .extra-offer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            text-align: center;
+        }
+        .extra-offer-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .extra-offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* --- 6. MARKI --- */
         @keyframes scroll {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(calc(-190px * 20)); /* (width + gap) * number of items */
+                transform: translateX(calc(-190px * 20)); 
             }
         }
         .brands-slider {
@@ -456,7 +366,7 @@
         .brands-slider .slide-track {
             animation: scroll 60s linear infinite;
             display: flex;
-            width: calc(190px * 40); /* (width + gap) * number of items * 2 */
+            width: calc(190px * 40); 
         }
         .brands-slider:hover .slide-track {
             animation-play-state: paused;
@@ -481,50 +391,44 @@
             transform: translateZ(20px);
         }
         
-        /* --- 6. OPINIE --- */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .review-card {
-            background-color: #ffffff;
-            padding: 30px;
-            border-left: 5px solid var(--color-primary);
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            font-style: italic;
-        }
-        
-        .review-card p:first-of-type {
-            margin-bottom: 15px;
-        }
-
-        .review-card .author {
-            font-weight: 700;
-            font-style: normal;
-            text-align: right;
-            color: var(--color-dark);
-        }
-
-        .reviews-summary {
+        /* --- 7. OPINIE --- */
+        .reviews-box {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.25rem;
-            font-weight: 500;
+            background: url('img/IMG_0409.JPG') no-repeat center center;
+            background-size: cover;
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            position: relative;
+            color: white;
         }
-        
-        .google-reviews-btn-container {
-            text-align: center;
-            margin-top: 40px;
+        .reviews-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            border-radius: var(--border-radius);
         }
-        
-        /* --- 7. KONTAKT I LOKALIZACJA --- */
+        .reviews-box > * {
+            position: relative;
+            z-index: 2;
+        }
+        .reviews-box h3 {
+            color: white;
+            font-size: 2rem;
+        }
+        .reviews-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* --- 8. KONTAKT I LOKALIZACJA --- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .contact-details ul {
@@ -547,11 +451,12 @@
             text-align: center;
         }
 
-        .contact-map-image {
-             width: 100%;
-             height: 100%;
-             object-fit: cover;
-             min-height: 400px;
+        .contact-image {
+             width: 93%;
+             height: auto;
+             display: block;
+             margin-left: auto;
+             border-radius: var(--border-radius);
         }
         
         .map-container {
@@ -562,7 +467,7 @@
             border: none;
             border-radius: var(--border-radius);
             width: 100%;
-            height: 300px;
+            height: 390px;
         }
 
         .social-links {
@@ -570,18 +475,18 @@
         }
         
         .social-links a {
-            font-size: 1.8rem;
-            margin-right: 20px;
-            opacity: 0.7;
-            transition: opacity 0.3s ease, color 0.3s ease;
-            color: var(--color-text);
+            font-size: 1.1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
         }
         .social-links a:hover {
             opacity: 1;
-            color: var(--color-primary);
+        }
+        .social-links i {
+            margin-right: 10px;
         }
         
-        /* --- 8. STOPKA --- */
+        /* --- 9. STOPKA --- */
         .footer {
             background-color: var(--color-dark);
             color: #bdc3c7;
@@ -610,21 +515,90 @@
             color: #ffffff;
         }
 
-        .footer .privacy-policy {
-            margin-top: 25px;
-            font-size: 0.8rem;
+        .footer .privacy-policy a {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        /* --- MODALE --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.is-visible .modal-container {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .modal-header h3 {
+            margin-bottom: 0;
+            font-size: 1.8rem;
+        }
+        .close-modal {
+            font-size: 2rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--color-text);
+            line-height: 1;
+        }
+        .modal-body ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+        .modal-body li {
+            margin-bottom: 10px;
         }
         
         /* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
+        @media (min-width: 768px) {
+            .services-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero-section h1 {
                 font-size: 3rem;
             }
-            .contact-grid, .about-us-grid {
+            .contact-grid, .about-us-grid, .extra-offer-grid {
                 grid-template-columns: 1fr;
             }
-            .contact-map-image {
+            .contact-image {
                 order: -1;
+                width: 100%;
                 min-height: 300px;
             }
             .about-us-content {
@@ -647,9 +621,6 @@
             }
             .hero-section .subtitle {
                 font-size: 1.1rem;
-            }
-            .reviews-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -674,7 +645,7 @@
                     <div class="about-us-content">
                         <h2>Kim jesteśmy?</h2>
                         <p>Od 2008 roku zajmujemy się kompleksową obsługą narciarzy — oferujemy sprzedaż i wypożyczalnię sprzętu narciarskiego, zarówno nowego, jak i używanego.</p>
-                        <p>Dbamy o to, by sprzęt był właściwie dobrany i precyzyjnie wyregulowany — dla Twojego komfortu i bezpieczeństwa. Nasz zespół to doświadczeni profesjonaliści, którym możesz zaufać.</p>
+                        <p>Dbamy o to, by sprzęt był właściwie dobrany i precyzjalnie wyregulowany — dla Twojego komfortu i bezpieczeństwa. Nasz zespół to doświadczeni profesjonaliści, którym możesz zaufać.</p>
                         <ul class="about-us-points">
                             <li>Fachowe doradztwo</li>
                             <li>Własny serwis</li>
@@ -682,7 +653,7 @@
                         </ul>
                     </div>
                     <div class="about-us-image">
-                        <img src="img/IMG_0415.JPG" alt="Wnętrze sklepu narciarskiego Ski Sport Jamro">
+                        <img src="img/img_0415.jpg" alt="Wnętrze sklepu narciarskiego Ski Sport Jamro">
                     </div>
                 </div>
             </div>
@@ -722,23 +693,33 @@
                 </div>
             </div>
         </section>
-
-        <section id="ai-advisor">
-             <div class="container fade-in-section">
-                <h2>Nie wiesz co wybrać?</h2>
-                <p>Nasz inteligentny asystent pomoże Ci dobrać idealny sprzęt. Odpowiedz na kilka pytań, a my przygotujemy dla Ciebie wstępną rekomendację.</p>
-                <button id="open-ai-modal" class="cta-button">✨ Dopasuj sprzęt z AI</button>
-            </div>
-        </section>
         
         <section id="uslugi">
             <div class="container fade-in-section">
-                <h2>Usługi dostępne na miejscu:</h2>
+                <h2>Nasze Usługi</h2>
                 <ul class="services-list">
-                    <li><i class="fas fa-tools service-icon"></i> Serwis nart<br><small>(ostrzenie, smarowanie, montaż wiązań)</small></li>
-                    <li><i class="fas fa-shoe-prints service-icon"></i> Boot fitting<br><small>(dopasowywanie butów narciarskich)</small></li>
-                    <li><i class="fa-solid fa-person-skiing service-icon"></i> Wypożyczalnia sprzętu<br><small>(narty, deski, buty)</small></li>
+                    <li class="service-item clickable" data-modal-target="service-modal"><i class="fas fa-tools service-icon"></i> <strong>Profesjonalny serwis sprzętu</strong><br><small>Ostrzenie, smarowanie, struktury – ręcznie i maszynowo</small></li>
+                    <li class="service-item clickable" data-modal-target="bootfitting-modal"><i class="fas fa-shoe-prints service-icon"></i> <strong>Dopasowanie butów (boot fitting)</strong><br><small>Idealne dopasowanie do stopy i stylu jazdy</small></li>
+                    <li class="service-item clickable" data-modal-target="rental-modal"><i class="fa-solid fa-person-skiing service-icon"></i> <strong>Wypożyczalnia sprzętu</strong><br><small>Narty, buty i więcej</small></li>
+                    <li class="service-item clickable" data-modal-target="bindings-modal"><i class="fa-solid fa-screwdriver-wrench service-icon"></i> <strong>Montaż i regulacja wiązań</strong><br><small>Precyzyjne ustawienie dla Twojego bezpieczeństwa</small></li>
                 </ul>
+            </div>
+        </section>
+        
+        <section id="dodatkowe-oferty">
+            <div class="container fade-in-section">
+                <div class="extra-offer-grid">
+                    <div class="extra-offer-card">
+                        <i class="fa-solid fa-gift service-icon" style="font-size: 60px;"></i>
+                        <h3>Karta Podarunkowa</h3>
+                        <p>Nie masz pomysłu na prezent? Karta podarunkowa to idealne rozwiązanie dla każdego miłośnika zimy!</p>
+                    </div>
+                     <div class="extra-offer-card">
+                        <i class="fa-solid fa-box-open service-icon" style="font-size: 60px;"></i>
+                        <h3>Zamówienia Indywidualne</h3>
+                        <p>Marzysz o konkretnym modelu nart lub butów? Jesteśmy w stanie zamówić go specjalnie dla Ciebie!</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -795,23 +776,10 @@
         <section id="opinie">
             <div class="container fade-in-section">
                 <h2>Co mówią o nas klienci?</h2>
-                
-                <div class="reviews-summary">
-                    Na podstawie opinii z Google
-                </div>
-                <div class="reviews-grid">
-                    <article class="review-card">
-                        <p>"Świetna obsługa, ogromna wiedza i cierpliwość do klienta! Sprzęt dobrany idealnie."</p>
-                        <p class="author">– Anna K.</p>
-                    </article>
-                    <article class="review-card">
-                        <p>"Topowy sprzęt, super doradztwo. Kupuję tam co sezon i nigdy się nie zawiodłem."</p>
-                        <p class="author">– Michał Z.</p>
-                    </article>
-                </div>
-
-                <div class="google-reviews-btn-container">
-                    <a href="https://www.google.com/search?q=Ski-Sport+Jamro+Opinie" target="_blank" class="cta-button" style="background-color: var(--color-dark);">Zobacz wszystkie opinie</a>
+                <div class="reviews-box">
+                    <h3>Sprawdź opinie o nas!</h3>
+                    <p>Twoje zaufanie jest dla nas najważniejsze. Zobacz, co mówią o nas inni narciarze.</p>
+                     <a href="https://www.google.com/search?q=Ski-Sport+Jamro+Opinie" target="_blank" class="cta-button">Czytaj opinie w Google</a>
                 </div>
             </div>
         </section>
@@ -829,15 +797,15 @@
                                 <li><i class="fas fa-clock contact-icon"></i> Pon–Pt: 10:00 – 19:00, Sob: 10:00 – 16:00</li>
                             </ul>
                             <div class="social-links">
-                                <a href="https://www.facebook.com/SkiSportJamro/?locale=pl_PL" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/SkiSportJamro/?locale=pl_PL" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i> Odwiedź nasz profil na Facebooku</a>
                             </div>
                         </div>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19834.787106249398!2d17.6449811!3d51.580178!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47054ce0a326a29b%3A0x89967cebe2d3540e!2sSki-Sport%20Jamro!5e0!3m2!1spl!2spl!4v1753819944449!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        </div>
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19834.787106249398!2d17.6449811!3d51.580178!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47054ce0a326a29b%3A0x89967cebe2d3540e!2sSki-Sport%20Jamro!5e0!3m2!1spl!2spl!4v1753819944449!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                     <div>
-                        <img src="img/IMG_0414.JPG" alt="Lada sklepowa z logo Ski Sport Jamro" class="contact-map-image">
+                        <img src="img/img_0414.jpg" alt="Lada sklepowa z logo Ski Sport Jamro" class="contact-image">
                     </div>
                 </div>
             </div>
@@ -851,49 +819,109 @@
             <p>ul. Leśna 23, 63-430 Raczyce</p>
             <p><a href="tel:508350913">508 350 913</a> | <a href="tel:505007572">505 007 572</a> | <a href="mailto:Jamrop@wp.pl">Jamrop@wp.pl</a></p>
             <p class="privacy-policy">
-                <a href="#">Polityka Prywatności</a>
+                <a data-modal-target="privacy-modal">Polityka Prywatności</a>
             </p>
             <p>© 2024 Twój Sklep Narciarski. Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
 
-    <div id="ai-modal" class="modal-overlay">
+    <!-- MODALE -->
+    <div id="service-modal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
-                <h3>✨ Twój Osobisty Doradca AI</h3>
+                <h3>Profesjonalny serwis sprzętu</h3>
                 <button class="close-modal">×</button>
             </div>
             <div class="modal-body">
-                <form id="ai-form">
-                    <div class="form-group">
-                        <label for="skill-level">Jaki jest Twój poziom zaawansowania?</label>
-                        <select id="skill-level" name="skill-level">
-                            <option value="Początkujący">Początkujący</option>
-                            <option value="Średniozaawansowany">Średniozaawansowany</option>
-                            <option value="Ekspert">Ekspert</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="ski-style">Jaki styl jazdy preferujesz?</label>
-                        <select id="ski-style" name="ski-style">
-                            <option value="Spokojna jazda po przygotowanych trasach">Spokojna jazda po przygotowanych trasach</option>
-                            <option value="Szybka jazda carvingowa">Szybka jazda carvingowa</option>
-                            <option value="Jazda poza trasami (freeride)">Jazda poza trasami (freeride)</option>
-                            <option value="Ewolucje w snowparku (freestyle)">Ewolucje w snowparku (freestyle)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="extra-info">Dodatkowe informacje (np. wzrost, waga, czy potrzebujesz też kasku i gogli)</label>
-                        <textarea id="extra-info" name="extra-info" placeholder="Im więcej szczegółów, tym lepsza rekomendacja!"></textarea>
-                    </div>
-                    <button type="submit" class="cta-button">Generuj rekomendację</button>
-                </form>
-                <div class="loader" id="loader"></div>
-                <div id="ai-result"></div>
+                <p>Prowadzimy kompleksowy serwis nart i snowboardów, obejmujący:</p>
+                <ul>
+                    <li>ostrzenie krawędzi (maszynowe i ręczne),</li>
+                    <li>wypełnianie ubytków i regenerację ślizgów,</li>
+                    <li>smarowanie na gorąco,</li>
+                    <li>polerowanie i nakładanie struktur.</li>
+                </ul>
+                <p>Korzystamy z profesjonalnych maszyn serwisowych i wysokiej klasy preparatów. Dbamy o to, aby Twój sprzęt był idealnie przygotowany do każdych warunków.</p>
             </div>
         </div>
     </div>
 
+    <div id="bootfitting-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Dopasowanie butów (boot fitting)</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Oferujemy pełną personalizację butów narciarskich dzięki technologiom:</p>
+                <ul>
+                    <li>Atomic Memory Fit</li>
+                    <li>Salomon Custom Shell</li>
+                    <li>Fischer Vacuum Fit</li>
+                </ul>
+                <p>Dopasowujemy skorupę i but wewnętrzny do indywidualnego kształtu stopy, co znacząco zwiększa komfort i kontrolę jazdy. Cały proces trwa zaledwie kilkanaście minut, a efekty czuć od pierwszego zjazdu. To idealne rozwiązanie zarówno dla początkujących, jak i zaawansowanych narciarzy.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="rental-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Wypożyczalnia sprzętu</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Oferujemy szeroki wybór sprzętu narciarskiego do wypożyczenia na miejscu:</p>
+                <ul>
+                    <li>narty (różne długości i style jazdy),</li>
+                    <li>buty narciarskie (w różnych rozmiarach),</li>
+                    <li>kijki narciarskie.</li>
+                </ul>
+                <p><strong>Nie wypożyczamy kasków ani odzieży.</strong></p>
+                <p>Wszystkie zestawy są w pełni przygotowane do jazdy – każdorazowo przechodzą przez serwis: są smarowane, regulowane i sprawdzane pod kątem technicznym. Dopasowanie sprzętu odbywa się na miejscu, z uwzględnieniem wzrostu, wagi i poziomu zaawansowania narciarza.</p>
+                <p>Sprzęt można wypożyczyć na 1 dzień, weekend lub cały tydzień – bez zbędnych formalności.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="bindings-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Montaż i regulacja wiązań</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Prawidłowo zamontowane i wyregulowane wiązania to podstawa bezpiecznej jazdy. W naszym serwisie oferujemy:</p>
+                <ul>
+                    <li>precyzyjny montaż wiązań narciarskich do konkretnego modelu nart i butów,</li>
+                    <li>regulację siły wypięcia (DIN) zgodnie z wagą, wzrostem, umiejętnościami i stylem jazdy,</li>
+                    <li>kontrolę stanu technicznego elementów mocujących.</li>
+                </ul>
+                <p>Korzystamy ze specjalistycznych narzędzi pomiarowych i postępujemy zgodnie z wytycznymi producentów sprzętu. Regulacja wykonywana jest każdorazowo przy serwisie lub wypożyczeniu sprzętu, a także na życzenie klientów indywidualnych.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Polityka prywatności</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Szanujemy Twoją prywatność. Niniejsza strona internetowa <strong>nie gromadzi, nie przetwarza ani nie przechowuje danych osobowych odwiedzających</strong>.</p>
+                <h4>Cookies</h4>
+                <p>Na stronie nie są stosowane pliki cookies do celów analitycznych, marketingowych ani śledzenia użytkownika.</p>
+                <h4>Dane kontaktowe</h4>
+                <p>Na stronie znajdują się dane kontaktowe (telefon, e-mail), które służą jedynie do umożliwienia kontaktu z firmą w sposób bezpośredni. Nie są one rejestrowane ani przetwarzane przez system informatyczny.</p>
+                <h4>Linki zewnętrzne</h4>
+                <p>Strona zawiera linki do zewnętrznych serwisów, takich jak Facebook oraz Google Maps. Korzystając z tych odnośników, obowiązuje polityka prywatności danej platformy.</p>
+                <h4>Administrator danych</h4>
+                <p>Administratorem strony jest firma SKI SPORT JAMRO z siedzibą przy ul. Leśna 23, 63-430 Raczyce. W przypadku pytań dotyczących ochrony prywatności, prosimy o kontakt: <a href="mailto:Jamrop@wp.pl">Jamrop@wp.pl</a>.</p>
+                <h4>Zmiany w polityce</h4>
+                <p>Polityka prywatności może być okresowo aktualizowana. Aktualna wersja dokumentu jest zawsze dostępna na tej podstronie.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         // --- Skrypt do animacji "fade-in" dla sekcji podczas przewijania ---
@@ -901,16 +929,16 @@
             const sections = document.querySelectorAll('.fade-in-section');
 
             const observerOptions = {
-                root: null, // Obserwacja względem viewportu
+                root: null, 
                 rootMargin: '0px',
-                threshold: 0.1 // Uruchom, gdy 10% elementu jest widoczne
+                threshold: 0.1 
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Przestań obserwować po animacji
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -920,90 +948,34 @@
             });
         });
 
-        // --- Skrypt do obsługi modala i Gemini API ---
-        const openModalBtn = document.getElementById('open-ai-modal');
-        const modalOverlay = document.getElementById('ai-modal');
-        const closeModalBtn = modalOverlay.querySelector('.close-modal');
-        const aiForm = document.getElementById('ai-form');
-        const loader = document.getElementById('loader');
-        const resultDiv = document.getElementById('ai-result');
-
-        const openModal = () => modalOverlay.classList.add('is-visible');
-        const closeModal = () => modalOverlay.classList.remove('is-visible');
-
-        openModalBtn.addEventListener('click', openModal);
-        closeModalBtn.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeModal();
-            }
+        // --- Skrypt do obsługi modali ---
+        const modalTriggers = document.querySelectorAll('[data-modal-target]');
+        
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const modalId = trigger.getAttribute('data-modal-target');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('is-visible');
+                }
+            });
         });
 
-        aiForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const skill = document.getElementById('skill-level').value;
-            const style = document.getElementById('ski-style').value;
-            const extra = document.getElementById('extra-info').value;
+        const closeButtons = document.querySelectorAll('.close-modal');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal-overlay');
+                modal.classList.remove('is-visible');
+            });
+        });
 
-            loader.style.display = 'block';
-            resultDiv.textContent = '';
-
-            const prompt = `
-                You are a helpful and friendly ski shop assistant in a Polish store. 
-                A customer is asking for an equipment recommendation. Their details are:
-                - Skill Level: ${skill}
-                - Preferred Skiing Style: ${style}
-                - Additional Information: ${extra}
-
-                Based on this, provide a personalized ski equipment recommendation. 
-                Our store offers: all-mountain, freeride, freestyle, carving, and skitouring skis; ski boots; bindings; poles; jackets; pants; gloves; goggles; and helmets.
-
-                Structure your response in Polish as follows:
-                1.  Start with a friendly greeting.
-                2.  Recommend a type of skis and briefly explain why it's a good choice for them.
-                3.  Recommend a type of ski boots (e.g., flex hardness) and explain the reasoning.
-                4.  If they mentioned needing other gear (like in additional info), recommend those items as well.
-                5.  Conclude by warmly inviting them to the store for a professional fitting and to see the equipment in person, emphasizing that the final choice is best made on-site.
-
-                Keep the tone encouraging and professional. The response must be in Polish.
-            `;
-            
-            try {
-                let chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-                const payload = { contents: chatHistory };
-                const apiKey = ""; // Klucz API zostanie wstawiony automatycznie
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                
-                const response = await fetch(apiUrl, {
-                     method: 'POST',
-                     headers: { 'Content-Type': 'application/json' },
-                     body: JSON.stringify(payload)
-                 });
-
-                if (!response.ok) {
-                    throw new Error(`Błąd HTTP! Status: ${response.status}`);
+        const modalOverlays = document.querySelectorAll('.modal-overlay');
+        modalOverlays.forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('is-visible');
                 }
-                 
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    resultDiv.textContent = text;
-                } else {
-                    resultDiv.textContent = 'Przepraszamy, nie udało się wygenerować odpowiedzi. Spróbuj ponownie później.';
-                    console.error("Unexpected API response structure:", result);
-                }
-
-            } catch (error) {
-                console.error('Błąd podczas komunikacji z API Gemini:', error);
-                resultDiv.textContent = 'Wystąpił błąd. Nie można połączyć się z naszym doradcą AI. Sprawdź konsolę, aby uzyskać więcej informacji.';
-            } finally {
-                loader.style.display = 'none';
-            }
+            });
         });
 
     </script>
