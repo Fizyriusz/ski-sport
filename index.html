@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ski Sport Jamro - Sprzęt i Serwis Narciarski</title>
-    <meta name="description" content="Profesjonalny sprzęt narciarski, topowe marki i fachowe doradztwo. Sprzedaż, serwis i wypożyczalnia sprzętu narciarskiego.">
+    <title>Ski Sport Jamro — sklep i serwis narciarski (wyłącznie stacjonarnie)</title>
+    <meta name="description" content="To strona wizytówkowa — sprzedaż wyłącznie stacjonarna. Sklep i serwis narciarski w Raczycach: dobór sprzętu, boot fitting, montaż i regulacja wiązań, wypożyczalnia.">
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +22,18 @@
             --color-dark: #2c3e50;    /* Ciemny granat */
             --color-light-gray: #f4f6f8; /* Jasne tło sekcji */
             --color-text: #34495e;      /* Kolor tekstu */
+            --background-color: #ffffff;
+            --card-background: #ffffff;
+            --transition-speed: 0.3s;
             --container-width: 1140px;
-            --section-padding: 80px 0;
-            --border-radius: 8px;
+        }
+
+        body.dark-mode {
+            --color-dark: #ecf0f1;
+            --color-light-gray: #2c3e50;
+            --color-text: #bdc3c7;
+            --background-color: #1f2937;
+            --card-background: #34495e;
         }
 
         /* --- Reset i globalne style --- */
@@ -42,20 +51,21 @@
             font-family: 'Poppins', sans-serif;
             color: var(--color-text);
             line-height: 1.7;
-            background-color: #ffffff;
+            background-color: var(--background-color);
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
         /* --- Komponenty i style ogólne --- */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 80px 20px;
         }
 
         section {
-            padding: var(--section-padding);
             width: 100%;
             overflow: hidden; 
+            transition: background-color var(--transition-speed) ease;
         }
 
         section:nth-of-type(even) {
@@ -66,6 +76,7 @@
             color: var(--color-dark);
             font-weight: 700;
             line-height: 1.2;
+            transition: color var(--transition-speed) ease;
         }
 
         h2 {
@@ -119,6 +130,7 @@
             max-width: 100%;
             height: auto;
             border-radius: var(--border-radius);
+            display: block;
         }
 
         /* --- Animacje przy przewijaniu --- */
@@ -131,6 +143,20 @@
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* --- Top Ribbon --- */
+        .top-ribbon {
+            background-color: var(--color-dark);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color var(--transition-speed) ease;
+        }
+        body.dark-mode .top-ribbon {
+            background-color: var(--color-secondary);
         }
 
         /* --- 1. HERO SECTION --- */
@@ -209,12 +235,13 @@
         .about-us-points li {
             font-weight: 500;
             font-size: 1rem;
-            background: white;
+            background: var(--background-color);
             padding: 10px 20px;
             border-radius: var(--border-radius);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
+            transition: background-color var(--transition-speed) ease;
         }
 
         .about-us-points li::before {
@@ -224,7 +251,50 @@
             font-size: 1rem;
         }
 
-        /* --- 3. OFERTA --- */
+        /* --- 3. DLACZEGO WARTO --- */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .why-us-item {
+            text-align: center;
+        }
+        .why-us-item .icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+        .why-us-item h4 {
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+        }
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1px;
+            background-color: #ddd;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        .comparison-table div {
+            padding: 15px;
+            background-color: var(--card-background);
+        }
+        .comparison-header {
+            font-weight: 700;
+            background-color: var(--color-light-gray) !important;
+        }
+        body.dark-mode .comparison-header {
+             background-color: #4a637e !important;
+        }
+        .comparison-table .icon-check { color: #27ae60; }
+        .comparison-table .icon-cross { color: #c0392b; }
+
+        /* --- 4. OFERTA --- */
         .offer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -273,7 +343,7 @@
         #offer-card-2 { background-image: url('img/IMG_0400.JPG'); }
         #offer-card-3 { background-image: url('img/IMG_0402.JPG'); }
         
-        /* --- 4. USŁUGI --- */
+        /* --- 5. USŁUGI --- */
         .services-list {
             list-style: none;
             display: grid;
@@ -287,13 +357,13 @@
         .service-item {
             font-size: 1.1rem;
             font-weight: 500;
-            background: #ffffff;
+            background: var(--card-background);
             padding: 25px;
             border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
         }
         .service-item.clickable {
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .service-item.clickable:hover {
             transform: translateY(-5px);
@@ -307,7 +377,7 @@
             color: var(--color-primary);
         }
         
-        /* --- 5. KARTA PODARUNKOWA I ZAMÓWIENIA --- */
+        /* --- 6. KARTA PODARUNKOWA I ZAMÓWIENIA --- */
         .extra-offer-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -316,18 +386,18 @@
             text-align: center;
         }
         .extra-offer-card {
-            background: white;
+            background: var(--card-background);
             padding: 40px;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
         }
         .extra-offer-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        /* --- 6. MARKI --- */
+        /* --- 7. MARKI --- */
         @keyframes scroll {
             0% {
                 transform: translateX(0);
@@ -337,40 +407,50 @@
             }
         }
         .brands-slider {
-            background: white;
+            background: var(--card-background);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
             height: 100px;
             margin: auto;
-            overflow: hidden;
+            overflow-x: auto;
             position: relative;
             width: 100%;
+            transition: background-color var(--transition-speed) ease;
+            cursor: grab;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .brands-slider.is-grabbing {
+            cursor: grabbing;
+        }
+        .brands-slider::-webkit-scrollbar {
+            display: none;
         }
         .brands-slider::before,
         .brands-slider::after {
-            background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
             content: "";
             height: 100px;
             position: absolute;
             width: 200px;
             z-index: 2;
+            transition: background var(--transition-speed) ease;
+        }
+        .brands-slider::before {
+            left: 0;
+            top: 0;
+            background: linear-gradient(to right, var(--card-background) 0%, rgba(255, 255, 255, 0) 100%);
         }
         .brands-slider::after {
             right: 0;
             top: 0;
             transform: rotateZ(180deg);
+            background: linear-gradient(to right, var(--card-background) 0%, rgba(255, 255, 255, 0) 100%);
         }
-        .brands-slider::before {
-            left: 0;
-            top: 0;
-        }
+
         .brands-slider .slide-track {
-            animation: scroll 60s linear infinite;
             display: flex;
             width: calc(190px * 40); 
         }
-        .brands-slider:hover .slide-track {
-            animation-play-state: paused;
-        }
+
         .brand-logo {
             height: 100px;
             width: 190px;
@@ -383,7 +463,7 @@
         .brand-logo div {
             width: 100%;
             transition: transform 0.5s;
-            color: #34495e;
+            color: var(--color-text);
             font-size: 1.1rem;
             text-align: center;
         }
@@ -391,7 +471,7 @@
             transform: translateZ(20px);
         }
         
-        /* --- 7. OPINIE --- */
+        /* --- 8. OPINIE --- */
         .reviews-box {
             max-width: 800px;
             margin: 0 auto;
@@ -423,7 +503,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- 8. KONTAKT I LOKALIZACJA --- */
+        /* --- 9. KONTAKT I LOKALIZACJA --- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -486,12 +566,13 @@
             margin-right: 10px;
         }
         
-        /* --- 9. STOPKA --- */
+        /* --- 10. STOPKA --- */
         .footer {
             background-color: var(--color-dark);
             color: #bdc3c7;
             padding: 50px 0;
             text-align: center;
+            transition: background-color var(--transition-speed) ease;
         }
         
         .footer .logo-mini {
@@ -515,7 +596,7 @@
             color: #ffffff;
         }
 
-        .footer .privacy-policy a {
+        .footer .privacy-policy a, .footer .faq-link a {
             cursor: pointer;
             text-decoration: underline;
         }
@@ -541,7 +622,7 @@
             visibility: visible;
         }
         .modal-container {
-            background: white;
+            background: var(--background-color);
             padding: 30px 40px;
             border-radius: var(--border-radius);
             width: 90%;
@@ -549,7 +630,7 @@
             max-height: 90vh;
             overflow-y: auto;
             transform: scale(0.9);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color var(--transition-speed) ease;
         }
         .modal-overlay.is-visible .modal-container {
             transform: scale(1);
@@ -561,6 +642,9 @@
             margin-bottom: 20px;
             border-bottom: 1px solid #eee;
             padding-bottom: 15px;
+        }
+        body.dark-mode .modal-header {
+            border-bottom-color: #4a637e;
         }
         .modal-header h3 {
             margin-bottom: 0;
@@ -582,6 +666,30 @@
             margin-bottom: 10px;
         }
         
+        /* --- PRZEŁĄCZNIK DARK MODE --- */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--color-dark);
+            color: var(--background-color);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.3s ease;
+        }
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
         /* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
         @media (min-width: 768px) {
             .services-list {
@@ -622,11 +730,24 @@
             .hero-section .subtitle {
                 font-size: 1.1rem;
             }
+            .comparison-table {
+                display: block;
+            }
+            .comparison-table > div {
+                border-bottom: 1px solid #ddd;
+            }
+             body.dark-mode .comparison-table > div {
+                border-bottom: 1px solid #4a637e;
+            }
         }
 
     </style>
 </head>
 <body>
+
+    <div class="top-ribbon">
+      To strona wizytówkowa — <strong>sprzedaż i doradztwo wyłącznie w sklepie stacjonarnym</strong>.
+    </div>
 
     <header class="hero-section">
         <div class="hero-content fade-in-section">
@@ -645,7 +766,7 @@
                     <div class="about-us-content">
                         <h2>Kim jesteśmy?</h2>
                         <p>Od 2008 roku zajmujemy się kompleksową obsługą narciarzy — oferujemy sprzedaż i wypożyczalnię sprzętu narciarskiego, zarówno nowego, jak i używanego.</p>
-                        <p>Dbamy o to, by sprzęt był właściwie dobrany i precyzjalnie wyregulowany — dla Twojego komfortu i bezpieczeństwa. Nasz zespół to doświadczeni profesjonaliści, którym możesz zaufać.</p>
+                        <p>Dbamy o to, by sprzęt był właściwie dobrany i precyzyjalnie wyregulowany — dla Twojego komfortu i bezpieczeństwa. Nasz zespół to doświadczeni profesjonaliści, którym możesz zaufać.</p>
                         <ul class="about-us-points">
                             <li>Fachowe doradztwo</li>
                             <li>Własny serwis</li>
@@ -655,6 +776,55 @@
                     <div class="about-us-image">
                         <img src="img/IMG_0415.JPG" alt="Wnętrze sklepu narciarskiego Ski Sport Jamro">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dlaczego-warto">
+            <div class="container fade-in-section">
+                <h2>Dlaczego warto przyjechać do nas zamiast szukać w sieci?</h2>
+                <div class="why-us-grid">
+                    <div class="why-us-item">
+                        <div class="icon"><i class="fas fa-shoe-prints"></i></div>
+                        <h4>Boot fitting i pomiar stopy</h4>
+                        <p>Przymiarki, wkładki, formowanie — koniec zgadywania rozmiarówki.</p>
+                    </div>
+                    <div class="why-us-item">
+                        <div class="icon"><i class="fa-solid fa-person-skiing"></i></div>
+                        <h4>Dobór nart pod Ciebie</h4>
+                        <p>Długość, twardość i promień dopasujemy do wagi, techniki i terenu.</p>
+                    </div>
+                    <div class="why-us-item">
+                        <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h4>Wiązania ustawione bezpiecznie</h4>
+                        <p>Montaż i DIN pod Twoje parametry — od razu gotowe do jazdy.</p>
+                    </div>
+                    <div class="why-us-item">
+                        <div class="icon"><i class="fas fa-tools"></i></div>
+                        <h4>Serwis i wsparcie po zakupie</h4>
+                        <p>Ostrzenie, smarowanie, naprawy — masz nas „pod ręką”.</p>
+                    </div>
+                </div>
+                <div class="comparison-table">
+                    <div class="comparison-header"></div>
+                    <div class="comparison-header">Szukanie w internecie</div>
+                    <div class="comparison-header">Wizyta u nas</div>
+
+                    <div><strong>Czas</strong></div>
+                    <div>Godziny porównań</div>
+                    <div>15–30 min i gotowe</div>
+
+                    <div><strong>Dopasowanie</strong></div>
+                    <div><i class="fas fa-times-circle icon-cross"></i> Ryzyko nietrafienia</div>
+                    <div><i class="fas fa-check-circle icon-check"></i> Pomiary + przymiarki</div>
+
+                    <div><strong>Bezpieczeństwo</strong></div>
+                    <div><i class="fas fa-exclamation-triangle icon-cross"></i> Samodzielne ustawienia</div>
+                    <div><i class="fas fa-check-circle icon-check"></i> Profesjonalna regulacja DIN</div>
+
+                    <div><strong>Koszt końcowy</strong></div>
+                    <div>Zwroty i poprawki</div>
+                    <div>Jeden przyjazd — pełna obsługa</div>
                 </div>
             </div>
         </section>
@@ -821,7 +991,10 @@
             <p class="privacy-policy">
                 <a data-modal-target="privacy-modal">Polityka Prywatności</a>
             </p>
-            <p>© 2025 Twój Sklep Narciarski. Wszelkie prawa zastrzeżone.</p>
+             <p class="faq-link">
+                <a data-modal-target="faq-modal">Mini-FAQ</a>
+            </p>
+            <p>© 2024 Twój Sklep Narciarski. Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
 
@@ -923,17 +1096,32 @@
         </div>
     </div>
 
-    <script>
-        // --- Skrypt do animacji "fade-in" dla sekcji podczas przewijania ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.fade-in-section');
+    <div id="faq-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Mini-FAQ</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h4>Czy prowadzicie sprzedaż online?</h4>
+                <p>Nie — <strong>sprzedaż i doradztwo prowadzimy wyłącznie stacjonarnie</strong> w Raczycach. Dzięki temu dopasowujemy sprzęt na miejscu, co jest bezpieczniejsze i szybsze niż zakupy online.</p>
+            </div>
+        </div>
+    </div>
 
+    <button id="dark-mode-toggle" class="dark-mode-toggle" title="Przełącz motyw">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Skrypt do animacji "fade-in" dla sekcji podczas przewijania ---
+            const sections = document.querySelectorAll('.fade-in-section');
             const observerOptions = {
                 root: null, 
                 rootMargin: '0px',
                 threshold: 0.1 
             };
-
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -942,42 +1130,109 @@
                     }
                 });
             }, observerOptions);
-
             sections.forEach(section => {
                 observer.observe(section);
             });
-        });
 
-        // --- Skrypt do obsługi modali ---
-        const modalTriggers = document.querySelectorAll('[data-modal-target]');
-        
-        modalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const modalId = trigger.getAttribute('data-modal-target');
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.add('is-visible');
-                }
+            // --- Skrypt do obsługi modali ---
+            const modalTriggers = document.querySelectorAll('[data-modal-target]');
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const modalId = trigger.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('is-visible');
+                    }
+                });
             });
-        });
 
-        const closeButtons = document.querySelectorAll('.close-modal');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const modal = button.closest('.modal-overlay');
-                modal.classList.remove('is-visible');
+            const closeButtons = document.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal-overlay');
+                    modal.classList.remove('is-visible');
+                });
             });
-        });
 
-        const modalOverlays = document.querySelectorAll('.modal-overlay');
-        modalOverlays.forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) {
-                    overlay.classList.remove('is-visible');
-                }
+            const modalOverlays = document.querySelectorAll('.modal-overlay');
+            modalOverlays.forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        overlay.classList.remove('is-visible');
+                    }
+                });
             });
-        });
 
+            // --- Skrypt do obsługi Dark Mode ---
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const body = document.body;
+            const setTheme = (theme) => {
+                body.classList.toggle('dark-mode', theme === 'dark');
+                darkModeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', theme);
+            };
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+            });
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            }
+
+             // --- Skrypt do obsługi przewijania karuzeli marek ---
+            const slider = document.querySelector('.brands-slider');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let autoScrollInterval;
+
+            const startAutoScroll = () => {
+                stopAutoScroll(); // Upewnij się, że nie ma wielu interwałów
+                autoScrollInterval = setInterval(() => {
+                    if (slider.scrollLeft >= (slider.scrollWidth / 2)) {
+                        slider.scrollLeft = 0;
+                    } else {
+                        slider.scrollLeft += 1;
+                    }
+                }, 30); // Prędkość przewijania
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('is-grabbing');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+                stopAutoScroll();
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                if (!isDown) startAutoScroll();
+                isDown = false;
+                slider.classList.remove('is-grabbing');
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('is-grabbing');
+                startAutoScroll();
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; 
+                slider.scrollLeft = scrollLeft - walk;
+            });
+
+            startAutoScroll();
+        });
     </script>
 </body>
 </html>
