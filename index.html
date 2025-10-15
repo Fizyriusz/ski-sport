@@ -257,9 +257,13 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
+            align-items: stretch;
         }
         .why-us-item {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .why-us-item .icon {
             font-size: 2.5rem;
@@ -270,6 +274,12 @@
             font-size: 1.2rem;
             color: var(--color-dark);
             margin-bottom: 10px;
+            line-height: 1.3;
+            min-height: 3.2rem; /* Stała wysokość bloków nagłówków wyrównuje start opisów */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
         .comparison-table {
             display: grid;
@@ -291,8 +301,12 @@
         body.dark-mode .comparison-header {
              background-color: #4a637e !important;
         }
-        .comparison-table .icon-check { color: #27ae60; }
-        .comparison-table .icon-cross { color: #c0392b; }
+        .icon-check { color: #27ae60; }
+        .icon-cross { color: #c0392b; }
+
+        .comparison-mobile {
+            display: none;
+        }
 
         /* --- 4. OFERTA --- */
         .offer-grid {
@@ -601,6 +615,10 @@
             text-decoration: underline;
         }
         
+        body.dark-mode .footer {
+            background-color: #1f2937; /* Zapewnia ciemniejsze tło stopki w trybie nocnym */
+        }
+        
         /* --- MODALE --- */
         .modal-overlay {
             position: fixed;
@@ -715,6 +733,12 @@
             .about-us-points {
                 justify-content: center;
             }
+            .contact-details-wrapper {
+                text-align: center;
+            }
+            .contact-details li {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 768px) {
@@ -731,13 +755,40 @@
                 font-size: 1.1rem;
             }
             .comparison-table {
+                display: none;
+            }
+            .comparison-mobile {
                 display: block;
             }
-            .comparison-table > div {
-                border-bottom: 1px solid #ddd;
+            .why-us-item h4 {
+                min-height: 0; /* Resetowanie wysokości na mobile */
             }
-             body.dark-mode .comparison-table > div {
-                border-bottom: 1px solid #4a637e;
+            .comparison-card {
+                background: var(--card-background);
+                padding: 20px;
+                border-radius: var(--border-radius);
+                margin-bottom: 20px;
+            }
+            .comparison-card h4 {
+                font-size: 1.3rem;
+                color: var(--color-dark);
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            .comparison-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+            body.dark-mode .comparison-row {
+                border-bottom-color: #4a637e;
+            }
+            .comparison-row:last-child {
+                border-bottom: none;
+            }
+            .comparison-row span:first-child {
+                font-weight: 500;
             }
         }
 
@@ -766,7 +817,7 @@
                     <div class="about-us-content">
                         <h2>Kim jesteśmy?</h2>
                         <p>Od 2008 roku zajmujemy się kompleksową obsługą narciarzy — oferujemy sprzedaż i wypożyczalnię sprzętu narciarskiego, zarówno nowego, jak i używanego.</p>
-                        <p>Dbamy o to, by sprzęt był właściwie dobrany i precyzyjalnie wyregulowany — dla Twojego komfortu i bezpieczeństwa. Nasz zespół to doświadczeni profesjonaliści, którym możesz zaufać.</p>
+                        <p>Dbamy o to, by sprzęt był właściwie dobrany i precyzyjnie wyregulowany — dla Twojego komfortu i bezpieczeństwa. Nasz zespół to doświadczeni profesjonaliści, którym możesz zaufać.</p>
                         <ul class="about-us-points">
                             <li>Fachowe doradztwo</li>
                             <li>Własny serwis</li>
@@ -797,7 +848,7 @@
                     <div class="why-us-item">
                         <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                         <h4>Wiązania ustawione bezpiecznie</h4>
-                        <p>Montaż i DIN pod Twoje parametry — od razu gotowe do jazdy.</p>
+                        <p>Montaż i ustawienie pod Twoje parametry — od razu gotowe do jazdy.</p>
                     </div>
                     <div class="why-us-item">
                         <div class="icon"><i class="fas fa-tools"></i></div>
@@ -805,6 +856,7 @@
                         <p>Ostrzenie, smarowanie, naprawy — masz nas „pod ręką”.</p>
                     </div>
                 </div>
+                
                 <div class="comparison-table">
                     <div class="comparison-header"></div>
                     <div class="comparison-header">Szukanie w internecie</div>
@@ -812,7 +864,7 @@
 
                     <div><strong>Czas</strong></div>
                     <div>Godziny porównań</div>
-                    <div>15–30 min i gotowe</div>
+                    <div>Dopasowanie w pół godziny</div>
 
                     <div><strong>Dopasowanie</strong></div>
                     <div><i class="fas fa-times-circle icon-cross"></i> Ryzyko nietrafienia</div>
@@ -820,12 +872,36 @@
 
                     <div><strong>Bezpieczeństwo</strong></div>
                     <div><i class="fas fa-exclamation-triangle icon-cross"></i> Samodzielne ustawienia</div>
-                    <div><i class="fas fa-check-circle icon-check"></i> Profesjonalna regulacja DIN</div>
+                    <div><i class="fas fa-check-circle icon-check"></i> Profesjonalna regulacja</div>
 
                     <div><strong>Koszt końcowy</strong></div>
                     <div>Zwroty i poprawki</div>
                     <div>Jeden przyjazd — pełna obsługa</div>
                 </div>
+
+                <div class="comparison-mobile">
+                    <div class="comparison-card">
+                        <h4>Czas</h4>
+                        <div class="comparison-row"><span>W internecie:</span><span>Godziny porównań</span></div>
+                        <div class="comparison-row"><span>U nas:</span><span>Dopasowanie w pół godziny</span></div>
+                    </div>
+                     <div class="comparison-card">
+                        <h4>Dopasowanie</h4>
+                        <div class="comparison-row"><span>W internecie:</span><span><i class="fas fa-times-circle icon-cross"></i> Ryzyko nietrafienia</span></div>
+                        <div class="comparison-row"><span>U nas:</span><span><i class="fas fa-check-circle icon-check"></i> Pomiary + przymiarki</span></div>
+                    </div>
+                     <div class="comparison-card">
+                        <h4>Bezpieczeństwo</h4>
+                        <div class="comparison-row"><span>W internecie:</span><span><i class="fas fa-exclamation-triangle icon-cross"></i> Samodzielne ustawienia</span></div>
+                        <div class="comparison-row"><span>U nas:</span><span><i class="fas fa-check-circle icon-check"></i> Profesjonalna regulacja</span></div>
+                    </div>
+                     <div class="comparison-card">
+                        <h4>Koszt końcowy</h4>
+                        <div class="comparison-row"><span>W internecie:</span><span>Zwroty i poprawki</span></div>
+                        <div class="comparison-row"><span>U nas:</span><span>Jeden przyjazd — pełna obsługa</span></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -964,7 +1040,7 @@
                                 <li><i class="fas fa-map-marker-alt contact-icon"></i> ul. Leśna 23, 63-430 Raczyce</li>
                                 <li><i class="fas fa-phone contact-icon"></i> <div><a href="tel:508350913">508 350 913</a><br><a href="tel:505007572">505 007 572</a></div></li>
                                 <li><i class="fas fa-envelope contact-icon"></i> <a href="mailto:Jamrop@wp.pl">Jamrop@wp.pl</a></li>
-                                <li><i class="fas fa-clock contact-icon"></i> Pon–Pt: 10:00 – 19:00, Sob: 10:00 – 16:00</li>
+                                <li><i class="fas fa-clock contact-icon"></i> Otwarte codziennie 16-21</li>
                             </ul>
                             <div class="social-links">
                                 <a href="https://www.facebook.com/SkiSportJamro/?locale=pl_PL" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i> Odwiedź nasz profil na Facebooku</a>
@@ -988,6 +1064,7 @@
             <div class="logo-mini">SKI SPORT JAMRO</div>
             <p>ul. Leśna 23, 63-430 Raczyce</p>
             <p><a href="tel:508350913">508 350 913</a> | <a href="tel:505007572">505 007 572</a> | <a href="mailto:Jamrop@wp.pl">Jamrop@wp.pl</a></p>
+            <p>Otwarte codziennie: 16:00 - 21:00</p>
             <p class="privacy-policy">
                 <a data-modal-target="privacy-modal">Polityka Prywatności</a>
             </p>
@@ -1236,3 +1313,4 @@
     </script>
 </body>
 </html>
+
